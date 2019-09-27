@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="a11y-dark.css" media="all">
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen">
+    <script src="highlight.pack.js"></script>
+</head>
+<body>
+    <script src="q.v0.min.js"></script>
+    <svg>
+        <circle x="0" y="0" r="100"></circle>
+    </svg>
+    <p></p>
+    <pre class='hljs'><code>setTimeout(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>{qjs.get(<span class="hljs-string">"circle"</span>).setAttr(<span class="hljs-string">"r"</span>,<span class="hljs-number">200</span>)},<span class="hljs-number">5000</span>)</code></pre>
+<script>
+        setTimeout(()=>{qjs.get("circle").setAttr("r",200)},5000)
+      </script>
+	<h1 class="title">q.js文档</h1>
+    <h2 class="title">1.获取单个元素</h2>
+    <p>
+        q.js使用CSS选择器选取元素。例如：
+        <pre class='hljs'><code>&lt;p class=<span class="hljs-string">"abc"</span> id=<span class="hljs-string">"def"</span>&gt;<span class="hljs-keyword">...</span>&lt;/p&gt;</code></pre>
+        为p.abc#def。使用q.js获取方法是：
+        <pre class='hljs'><code>qjs.<span class="hljs-function"><span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-string">"p.abc#def"</span>)</span></span></code></pre>
+    </p>
+    <h2 class="title">2.获取多个元素</h2>
+    <p>
+        q.js中获取多个元素和获取单个差不多。只是get换成了gets。
+    </p>
+    <h2 class="title">3.获取后处理</h2>
+    <h3 class="title">3.1.改变/获取文本</h3>
+    <p>
+        改变文本的方式如下：<pre class='hljs'><code>qjs.<span class="hljs-function"><span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-string">"p.abc#def"</span>)</span></span>.<span class="hljs-function"><span class="hljs-title">setText</span><span class="hljs-params">(<span class="hljs-string">"......"</span>)</span></span></code></pre>
+        此时，文本为`......`。
+        获取是把setText改成getText，去掉参数text，返回"......"。
+    </p>
+    <h3 class="title">3.2.改变/获取<abbr title="层叠样式表">CSS</abbr></h3>
+    <p>
+            <pre class='hljs'><code>qjs.<span class="hljs-function"><span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-string">"p.abc#def"</span>)</span></span>.<span class="hljs-function"><span class="hljs-title">setStyle</span><span class="hljs-params">(<span class="hljs-string">"color"</span>,<span class="hljs-string">"red"</span>)</span></span></code></pre>
+            这时，颜色变红。
+            获取是把setStyle改成getStyle，去掉参数v，返回"red"。
+    </p>
+    <h3 class="title">3.3.改变/获取属性</h3>
+    <p>
+            <pre class='hljs'><code>qjs.<span class="hljs-function"><span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-string">"p.abc#def"</span>)</span></span>.<span class="hljs-function"><span class="hljs-title">setAttr</span><span class="hljs-params">(<span class="hljs-string">"class"</span>,<span class="hljs-string">"qwe"</span>)</span></span></code></pre>
+            这时，class变为qwe。
+            获取是把setAttr改成getAttr，去掉参数v，返回"qwe"。
+    </p>
+    <h3 class="title">3.4.改变/获取<abbr title="超文本文档">HTML</abbr></h3>
+    <p>
+            <pre class='hljs'><code>qjs.<span class="hljs-function"><span class="hljs-title">setHTML</span><span class="hljs-params">(<span class="hljs-string">"&lt;a href=\"qqq\"&gt;123&lt;/a&gt;"</span>)</span></span></code></pre>
+            这时，产生一个内容为123的链接。
+            获取是把setAttr改成getAttr，去掉参数html，返回"&lt;a href="qqq"&gt;123&lt;/a&gt;"。
+    </p>
+    <h1 class="title">下载</h1>
+    <a href="q.v0.js">未压缩</a>
+    <a href="q.v0.min.js">压缩</a>
+</body>
+</html>
